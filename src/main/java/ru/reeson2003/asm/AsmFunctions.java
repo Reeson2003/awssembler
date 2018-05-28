@@ -2,7 +2,7 @@ package ru.reeson2003.asm;
 
 public class AsmFunctions {
     static {
-        System.loadLibrary("awsembler");
+        System.loadLibrary("awssembler");
     }
 
     public native int asm_string_length(String text);
