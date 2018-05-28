@@ -13,8 +13,11 @@ startScripts {
                 '\'$3 "-Duser.dir=\\$APP_HOME"\'')
         windowsScript.text = windowsScript.text.replaceFirst('(?<=DEFAULT_JVM_OPTS=)(.*)(?=\r\n)',
                 '$1 "-Duser.dir=%~dp0../"')
+        delete unixScript
     }
 }
+
+distTar.enabled = false
 
 repositories {
     mavenCentral()
