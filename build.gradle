@@ -10,9 +10,9 @@ sourceCompatibility = 1.8
 startScripts {
     doLast {
         unixScript.text = unixScript.text.replaceFirst('(?<=DEFAULT_JVM_OPTS=)((\'|\")(.*)(\'|"))(?=\n)',
-                '\'$3 "-Duser.dir=\\$APP_HOME"\'')
+                '\'$3 "-Djava.library.path=\\$APP_HOME"\\lib\'')
         windowsScript.text = windowsScript.text.replaceFirst('(?<=DEFAULT_JVM_OPTS=)(.*)(?=\r\n)',
-                '$1 "-Duser.dir=%~dp0../"')
+                '$1 "-Djava.library.path=%~dp0../lib/"')
         delete unixScript
     }
 }
@@ -25,4 +25,8 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
 }
