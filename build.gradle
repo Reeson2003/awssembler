@@ -7,6 +7,10 @@ applicationName = 'awssembler'
 
 sourceCompatibility = 1.8
 
+startScripts {
+    classpath += files('src/dist/awssembler.dll')
+}
+
 repositories {
     mavenCentral()
 }

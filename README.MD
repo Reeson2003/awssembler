@@ -14,7 +14,7 @@ path to your JDK **include** directory and **subfolders** and path to project **
 directory
 - add files under **native** directory into VS project as existing files
 - build VS project and go under project directory to check that .dll file appeared
-- copy .dll file into **src/main/resources** directory and rename it to ***awssembler.dll***
+- copy .dll file into **src/dist/lib** and rename it to ***awssembler.dll***
 
 ### Application ###
 To build and run application needs to be JDK x86 installed and **JAVA_HOME**
