@@ -1,8 +1,9 @@
-group 'ru.reeson2003'
-version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'application'
+
+mainClassName = 'ru.reeson2003.asm.Program'
+applicationName = 'awssembler'
 
 sourceCompatibility = 1.8
 
