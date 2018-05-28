@@ -8,7 +8,12 @@ applicationName = 'awssembler'
 sourceCompatibility = 1.8
 
 startScripts {
-    classpath += files('src/dist/awssembler.dll')
+    doLast {
+        unixScript.text = unixScript.text.replaceFirst('(?<=DEFAULT_JVM_OPTS=)((\'|\")(.*)(\'|"))(?=\n)',
+                '\'$3 "-Duser.dir=\\$APP_HOME"\'')
+        windowsScript.text = windowsScript.text.replaceFirst('(?<=DEFAULT_JVM_OPTS=)(.*)(?=\r\n)',
+                '$1 "-Duser.dir=%~dp0../"')
+    }
 }
 
 repositories {

@@ -2,6 +2,7 @@ package ru.reeson2003.asm;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -11,9 +12,14 @@ import java.util.List;
  * @author Pavel Gavrilov.
  */
 public class Program implements Title{
+
+    public static final String DLL_RELATIVE_PATH = "/lib/awssembler.dll";
+    public static final String USER_DIR = "user.dir";
+
     public static void main(String[] args) {
         try {
-            System.out.println(TITLE);
+            printTitle();
+            String dllPath = getDllPath();
             BufferedReader isReader = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("Введите путь к исходному файлу:");
             String filePath = isReader.readLine();
@@ -21,7 +27,7 @@ public class Program implements Title{
             System.out.println("Введите подстроку для стирания:");
             String toErase = isReader.readLine();
             String line;
-            SubstringEraser substringEraser = new AwesomeSubstringEraser();
+            SubstringEraser substringEraser = getSubstringEraser(dllPath);
             List<String> strings = new ArrayList<>();
             while (true) {
                 line = fileReader.readLine();
@@ -44,6 +50,21 @@ public class Program implements Title{
             isReader.close();
         } catch (Throwable e) {
             System.err.println("Ошибка!!!");
+            e.printStackTrace();
         }
+    }
+
+    private static SubstringEraser getSubstringEraser(String dllPath) {
+        AsmFunctions asmFunctions = new AsmFunctions(dllPath);
+        return new AwesomeSubstringEraser(asmFunctions);
+    }
+
+    private static String getDllPath() {
+        String applicationRoot = System.getProperty(USER_DIR);
+        return applicationRoot + DLL_RELATIVE_PATH;
+    }
+
+    private static void printTitle() {
+        System.out.println(TITLE);
     }
 }

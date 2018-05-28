@@ -1,8 +1,8 @@
 package ru.reeson2003.asm;
 
 public class AsmFunctions {
-    static {
-        System.loadLibrary("awssembler");
+    public AsmFunctions(String libPath) {
+        System.loadLibrary(libPath);
     }
 
     public native int asm_string_length(String text);

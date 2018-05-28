@@ -7,9 +7,14 @@ package ru.reeson2003.asm;
  * @author Pavel Gavrilov.
  */
 public class AwesomeSubstringEraser implements SubstringEraser {
+    private AsmFunctions asm;
+
+    public AwesomeSubstringEraser(AsmFunctions asm) {
+        this.asm = asm;
+    }
+
     @Override
     public String eraseAll(String baseString, String substring) {
-        AsmFunctions asm = new AsmFunctions();
         String toSearch = baseString;
         int substringLength = asm.asm_string_length(substring);
         StringBuilder stringBuilder = new StringBuilder();
